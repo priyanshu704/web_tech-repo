@@ -1,22 +1,31 @@
-SQL> create table PROJ(DNO varchar2(3) constraint DNO_FK_DEPT_Cons references DEPT(DNO) NOT NULL,
-  2  PRJ_NO varchar2(5) constraint P_LikePRJNO_Cons CHECK(PRJ_NO LIKE 'P%'),
-  3  PRJ_NAME varchar2(10),
-  4  PRJ_CREDIT number(2) constraint PRJ_CREDIT_RANGE_Cons CHECK(PRJ_CREDIT>=1 AND PRJ_CREDIT<=10),
-  5  STRT_DATE DATE,
-  6  END_DATE DATE,
-  7  constraint ENDDATE_GRT_STRT_Cons CHECK(END_DATE>STRT_DATE));
+SQL> alter table EMP
+  2  ADD CONSTRAINT FK_EMP
+  3  FOREIGN KEY(DEPTNO,PRJ_ID) REFERENCES PROJ;
+FOREIGN KEY(DEPTNO,PRJ_ID) REFERENCES PROJ
+                   *
+ERROR at line 3:
+ORA-02267: column type incompatible with referenced column type 
 
-Table created.
 
-SQL> DESC PROJ;
- Name                                      Null?    Type
- ----------------------------------------- -------- ----------------------------
- DNO                                       NOT NULL VARCHAR2(3)
- PRJ_NO                                             VARCHAR2(5)
- PRJ_NAME                                           VARCHAR2(10)
- PRJ_CREDIT                                         NUMBER(2)
- STRT_DATE                                          DATE
- END_DATE                                           DATE
+SQL> alter table EMP
+  2  ADD CONSTRAINT FK_EMP
+  3  FOREIGN KEY(DEPTNO,PRJ_ID) REFERENCES PROJ(DNO,PRJ_NO);
+FOREIGN KEY(DEPTNO,PRJ_ID) REFERENCES PROJ(DNO,PRJ_NO)
+                   *
+ERROR at line 3:
+ORA-02267: column type incompatible with referenced column type 
+
+
+SQL> alter table EMP
+  2  MODIFY (PRJ_ID VARCHAR2(5));
+
+Table altered.
+
+SQL> alter table EMP
+  2  ADD CONSTRAINT FK_EMP
+  3  FOREIGN KEY(DEPTNO,PRJ_ID) REFERENCES PROJ(DNO,PRJ_NO);
+
+Table altered.
 
 SQL> COMMIT;
 
