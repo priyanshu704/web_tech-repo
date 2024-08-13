@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Tim Berners-Lee</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+<style>
+		body
+		{
+			font-size:20;
+			text-align:justify;
+			background-image: linear-gradient(#aae4a9, #be71b8, #eddb18);
+		}
+		.para
+		{
+			padding-left:200px;
+                        padding-right:200px;
+		}
+	</style>
+	<body>
+		<center>
+		<h1>Tim Berners-Lee</h1>
+
+		<img src="./tim.jpg" height="300" width="300"></center>
+
+<p class="para">Sir Timothy John Berners-Lee, OM, KBE, FRS, FREng, FRSA, DFBCS, RDI (born 8 June 1955), also known as TimBL, is an English computer scientist best known as the inventor of the World Wide Web, the HTML markup language, the URL system, and HTTP.He is a professorial research fellow at the University of Oxford and a professor emeritus at the Massachusetts Institute of Technology (MIT).Berners-Lee was born on 8 June 1955 in London, England, the eldest of the four children of Mary Lee Woods and Conway Berners-Lee; his brother Mike is aprofessor of ecology and climate change management. His parents were computer scientists who worked on the first commercially built computer, the Ferranti Mark 1.</p>
+
+<p class="para">Berners-Lee proposed an information management system on 12 March 1989 and implemented the first successful communication between a Hypertext Transfer Protocol (HTTP) client and server via the Internet in mid-November. He devised and implemented the first Web browser and Web server, and helped foster the Web's subsequent explosive development. He is the founder and director of the World Wide Web Consortium (W3C), which oversees the continued development of the Web.He co-founded (with Rosemary Leith) the World Wide Web Foundation. In April 2009, he was elected as Foreign Associate of the National Academy of Sciences.</p>
+
+<p class="para">Berners-Lee is a senior researcher and holder of the 3Com founder's chair at the MIT Computer Science and Artificial Intelligence Laboratory (CSAIL).[14] He is a director of the Web Science Research Initiative (WSRI) and a member of the advisory board of the MIT Center for Collective Intelligence.In 2011, he was named as a member of the board of trustees of the Ford Foundation. He is a founder and president of the Open Data Institute and is currently an advisor at social network MeWe. In 2004, Berners-Lee was knighted by Queen Elizabeth II for his pioneering work. He received the 2016 Turing Award "for inventing the World Wide Web, the first web browser, and the fundamental protocols and algorithms allowing the Web to scale".He was named in Time magazine's list of the 100 Most Important People of the 20th century and has received a number of other accolades for his invention </p>
+		
+                <center><a href="w3c.html">BACK</a></center>
+	</body>
+</html>
