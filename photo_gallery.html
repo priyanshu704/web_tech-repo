@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>GALLERY PAGE</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-sacle=0.1">
+		<style>
+			.column
+			{
+				float:left;
+		        }
+			.column img
+			{
+				opacity:0.9;
+                        }
+			.column img:hover
+			{
+				opacity:0.1;
+			}
+			@media(orientation: landscape)
+			{
+				 body
+				 {
+					color: red;
+				 }
+			}
+			@media only screen and (min-width: 992px)
+			{
+				 .column
+				 {
+					 float: left;
+					 width: 25%;
+
+				 }
+			}
+			@media only screen and (min-width: 768px)and (max-width:991px)
+			{
+				.column
+				{
+					 float: left;
+					 width: 50%;
+				}
+			}
+
+		</style>
+	</head>
+	<body>
+		<h2 style="text-align:center;">PHOTO GALLERY</h2>
+			<div class="row1">
+				<div class="column">
+					<img src="Charminar-image.jpg" height=300 width=360>
+				</div>
+				<div class="column">
+					<img src="Gateway.of.india-image.jpg" height=300 width=360>
+				</div>
+				<div class="column">
+					<img src="Hawa.mahal-image.jpg" height=300 width=360>
+				</div>
+				<div class="column">
+					<img src="Humayun's.tomb-image.jpg" height=300 width=360>
+				</div>
+			</div>
+			<div class="row2">
+				<div class="column">
+					<img src="India.gate-image.jpg" height=300 width=360>
+				</div>
+				<div class="column">
+					<img src="Qutab.minar-image.jpg" height=300 width=360>
+				</div>
+				<div class="column">
+					<img src="Red.fort-image.jpg" height=300 width=360>
+				</div>
+				<div class="column">
+					<img src="Taj.mahal-image.jpg" height=300 width=360>
+				</div>
+			</div>
+			<div class="row3">
+				<div class="column">
+					<img src="Victorial.memorial-image.jpg" height=300 width=360>
+				</div>
+				<div class="column">
+					<img src="Agra.fort-image.jpg" height=300 width=360>
+				</div>
+				<div class="column">
+					<img src="Hampi-image.jpg" height=300 width=360>
+				</div>
+				<div class="column">
+					<img src="Golden.temple-image.jpg" height=300 width=360>
+				</div>
+			</div>
+	</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<style>
+	ul
+	{
+		width:100%;
+		height:40px;
+		list-style-type: none;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+		background-color: darkgrey;
+		text-align: center;
+		padding-top: 10px;
+		font-size: 25px;
+		font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	}
+	li a:hover
+	{
+		background-color: white;
+	}
+	li a
+	{
+		text-decoration: none;
+		color: black;
+	}
+	.img:hover
+	{
+		opacity:0.2;
+	}
+	* {
+	  box-sizing: border-box;
+	}
+
+	body
+	{
+	  margin: 0;
+	  font-family: Arial;
+	}
+	.header
+	{
+		text-align: center;
+		font-family:"Brush Script MT", cursive;
+	}
+	.row
+	{
+	  display: -ms-flexbox; /* IE10 */
+	  display: flex;
+	  -ms-flex-wrap: wrap; /* IE10 */
+	  flex-wrap: wrap;
+	  padding: 0 4px;
+	}
+
+	/* Create four equal columns that sits next to each other */
+	.column
+	{
+	  -ms-flex: 25%; /* IE10 */
+	  flex: 25%;
+	  max-width: 25%;
+	  padding: 0 4px;
+	}
+
+	.column img
+	{
+	  margin-top: 8px;
+	  vertical-align: middle;
+	  width: 100%;
+	}
+	@media screen and (min-width: 992px) 
+	{
+		.row
+		{
+			justify-content: space-between;
+		}
+		.row column 
+		{
+			  width: calc(33.33% - 20px);
+			  margin-bottom: 20px;
+		}
+	}
+	@media screen and (min-width: 768px) and (max-width: 991px) 
+	{
+		.column 
+		{
+			justify-content: space-between;
+		}
+		.column img 
+		{
+			width: calc(50% - 20px);
+			margin-bottom: 20px;
+		}
+	}
+	@media screen and (max-width: 767px) 
+	{
+			
+		.column
+		{
+			justify-content: center;
+		}
+		.column img 
+		{
+			width: 100%;
+			margin-bottom: 20px;
+		}
+	}
+	</style>
+	<body>
+		<nav>
+				<ul>
+					<li><a href="home.html">Home</a></li>
+					<li><a href="home.html">About</a></li>
+					<li><a href="gal.html">Photo Gallery</a></li>
+					<li><a href="home.html">Artical</a></li>
+				</ul>
+		</nav>
+		<div class="header">
+		<h1 class="header">Photo Gallery</h1>
+		</div>
+		<div class="row"> 
+		  <div class="column">
+			<img src="Charminar-image.jpg" style="width:100%">
+			<img src="Gateway.of.india-image.jpg" style="width:100%">
+			<img src="Hawa.mahal-image.jpg"style="width:100%">
+		  </div>
+		  <div class="column">
+			<img src="Humayun's.tomb-image.jpg"" style="width:100%">
+			<img src="India.gate-image.jpg" style="width:100%">
+			<img src="Qutab.minar-image.jpg" style="width:100%">
+		  </div>  
+		  <div class="column">
+			<img src="Red.fort-image.jpg" style="width:100%">
+			<img src="Taj.mahal-image.jpg" style="width:100%">
+			<img src="Victorial.memorial-image.jpg" style="width:100%">
+		  </div>
+		  <div class="column">
+			<img src="Agra.fort-image.jpg" style="width:100%">
+			<img src="Hampi-image.jpg" style="width:100%">
+			<img src="Golden.temple-image.jpg" style="width:100%">
+		  </div>
+		</div>
+</body>
+</html>

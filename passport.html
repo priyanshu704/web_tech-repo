@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Passport Seva Kendra</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+		table
+		{
+			width:40%;
+			
+		}
+		.center
+		{
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.b
+		{
+			height:30px;
+		}
+		.a
+		{
+			padding-left:577px;
+		}
+		.c
+		{
+			text-align:right;
+			padding-top:20px;
+		}
+		input[type=submit], input[type=reset]
+		{
+			background-color: blue;
+			border: none;
+		        color: white;
+		        padding: 10px 12px;
+		        text-decoration: none;
+		        margin: 4px 2px;
+		        cursor: pointer;
+		}
+		.s
+		{
+			color:red;
+		}
+		</style>
+	</head>
+	<body>
+		<img style="padding-left:440px;" src="passport.logo.png"></img>
+		<h1 class="a" style="color:blue;">User Registration</h1>
+		<p class="a"><b>Important Information:</b> Passport application can be processed at any<br>PSK/POPSK/PSLK WITHIN INDIA irrespective of your residential address.</p>
+		<a class="a" href="https://portal1.passportindia.gov.in/AppOnlineProject/online/apptAvailStatus">Click here</a> to check the appointment availability at all PSK/POPSK/PSLK.<br>
+		<a class="a" href="https://portal2.passportindia.gov.in/AppOnlineProject/pdf/CIR_0186917_Y.pdf">Click here</a>to know more about Apply Anywhere in India scheme for Passport Services.
+		</ul>
+		<br><br><br>
+		<form>
+			<table class="center">
+				<tr>
+					<td>
+						<label>Register to apply at<b class="s">*</b></label>
+					</td>
+					<td>
+						<input type=radio name="delhi" id="pass" required>
+						<label for="delhi">CPV DELHI</label><br>
+						<input type=radio name="delhi" id="pass" required>
+						<label for="pass">Passport office</label>
+					</td>
+					<td><small>Select the 'CPV Delhi' option to apply for Diplomatic/Official<br> passport at Consular, Passport and Visa (CPV) division, Delhi</small></td>
+				</tr>
+				<tr><td></td></tr>
+				<tr>
+					<td>Passport Office <b class="s">*</b> <br>(As per Present Residential Address)</td>
+					<td>
+						<select id="place" name="passofc" selected>
+							<option value="Ahmedabad">Ahmedabad</option>
+							<option value="Amritsar">Amritsar</option>
+							<option value="Bareily">Bareily</option>
+							<option value="Bengaluru">Bengaluru</option>
+							<option value="Bhopal">Bhopal</option>
+							<option value="Bubaneswar">Bubaneswar</option>
+							<option value="Chandigarh">Chandigarh</option>
+							<option value="Chennai">Chennai</option>
+							<option value="Cochi">Cochi</option>
+							<option value="Coimbatore">Coimbatore</option>
+							<option value="Dehradun">Dehradun</option>
+							<option value="Ghaziabad">Ghaziabad</option>
+                                                        <option value="Goa">Goa</option>
+                                                        <option value="Guwahati">Guwahati</option>
+                           				<option value="Hyderabad">Hyderabad</option>
+                         			        <option value="Jaipur">Jaipur</option>
+                                                        <option value="Jalandhar">Jalandhar</option>
+                                                        <option value="Jammu">Jammu</option>
+                                                        <option value="Kolkata">Kolkata</option>
+                                                        <option value="Kozhikode">Kozhikode</option>
+                                                        <option value="Lucknow">Lucknow</option>
+                                                        <option value="Madurai">Madurai</option>
+                                                        <option value="Mumbai">Mumbai</option>
+                                                        <option value="Nagpur">Nagpur</option>
+                                                        <option value="Patna">Patna</option>
+                                                        <option value="Pune">Pune</option>
+                                                        <option value="Raipur">Raipur</option>
+                                                        <option value="Ranchi">Ranchi</option>
+                                                        <option value="Shimla">Shimla</option>
+                                                        <option value="Srinagar">Srinagar</option>
+                                                        <option value="Surat">Surat</option>
+                                                        <option value="Tiruchirappalli">Tiruchirappalli</option>
+                                                        <option value="Trivandrum">Trivandrum</option>
+                                                        <option value="Vijayawada">Vijayawada</option>
+                                                        <option value="Visakhapatnam">Visakhapatnam</option>
+						</select>
+					</td>
+					<td><small>Tibetan Refugees applying for Identity Certificate must register <br>with 'Delhi' Passport Office.</small></td>
+				</tr>
+				<tr><td></td></tr>
+				<tr>
+					<td>Given Name (Max 45 Characters)<b class="s">*</b></td>
+					<td>
+						<input type="text" name="name" required>
+					</td>
+					<td>First Name + Middle <br><small>NameInitials and honorifics (e.g. Dr.,Col.,etc.) are not allowed.</small></td>
+				</tr>
+				<tr><td></td></tr>
+				<tr>
+					<td>Sur Name (Max 45 Characters)<b class="s">*</b></td>
+					<td>
+						<input type="text" name="sname" required>
+					</td>
+				</tr>
+				<tr><td></td></tr>
+				<tr>
+					<td>Date of Birth (DD/MM/YYYY)<b class="s">*</b></td>
+					<td>
+						<input type="date" name="dob" required>
+					</td>
+				</tr>
+				<tr><td></td></tr>
+				<tr>
+					<td>E-mail Id (Max 35 Characters)<b class="s">*</b></td>
+					<td>
+						<input type="email" name="mail" required>
+					</td>
+				</tr>
+				<tr><td></td></tr>
+				<tr>
+					<td>
+						<label>Do you want your Login Id<br>to be same as E-mail Id?</label>
+					</td>
+					<td>
+						<input type=radio name="delhi" id="yes" required>
+						<label for="yes">Yes</label>
+						<input type=radio name="delhi" id="no" required>
+						<label for="no">No</label>
+					</td>
+				</tr>
+				<tr><td></td></tr>
+				<tr>
+					<td>Login Id<b class="s">*</b></td>
+					<td>
+						<input type="text" name="id" required>
+					</td>
+				</tr>
+				<tr><td></td></tr>
+				<tr>
+					<td>Password<b class="s">*</b></td>
+					<td>
+						<input type="text" name="pass" required>
+					</td>
+					<td><a href="https://portal2.passportindia.gov.in/AppOnlineProject/onlineHtml/passwordPolicy.html">Password Policy</a></td>
+				</tr>
+				<tr><td></td></tr>
+				<tr>
+					<td>Confirm Password<b class="s">*</b></td>
+					<td>
+						<input type="text" name="cpass" required>
+					</td>
+				</tr>
+				<tr><td></td></tr>
+				<tr>
+					<td>Hint Question<b class="s">*</b></td>
+					<td>
+						<select id="place" name="passofc">
+							<option value="Ahmedabad">Birth City</option>
+							<option value="Amritsar">Favourite Colour</option>
+							<option value="Amritsar">Favourite Cricketer</option>
+							<option value="Amritsar">Favourite food</option>
+							<option value="Amritsar">First school</option>
+							<option value="Amritsar">Make of first car used</option>
+							<option value="Amritsar">Mother's median name</option>
+						</select>
+					</td>
+				</tr>
+				<tr><td></td></tr>
+				<tr>
+					<td>Enter Characters Displayed <b class="s">*</b></td>
+					<td><img src="captcha.png"></td>
+				</tr>
+				<tr><td></td></tr>
+				<tr>
+					<td></td>
+					<td><input type="text" name="captcha" required></td>
+				</tr>
+				<tr><td></td></tr>
+				<tr>
+					<td class="c" colspan=2><input type="submit" name="register" value="Register"> <input type="reset" name="clear" value="Clear"></td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>
