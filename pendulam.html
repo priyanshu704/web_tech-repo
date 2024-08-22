@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newton's Cradle | Rohit </title>
+<style>
+    * {
+    margin: 0px;
+    padding: 0px;
+    }
+
+    body{
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    }
+
+    .cradle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    padding: 50px 0px;
+    border: 5px solid red;
+    border-radius: 11px;
+    width: 60%;
+    padding-top: 0;
+    border-top: 25px solid red;
+    }
+
+    .ball-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    }
+
+    @keyframes swingLeft {
+    0% {
+        transform: rotate(45deg);
+    }
+
+    50%{
+        transform: rotate(0deg);
+    }
+
+    100%{
+        transform: rotate(0deg);
+    }
+    }
+
+    @keyframes swingRight {
+    0% {
+        transform: rotate(-45deg);
+    }
+
+    50%{
+        transform: rotate(0deg);
+    }
+
+    100%{
+        transform: rotate(0deg);
+    }
+    }
+
+    .ball-container:first-child {
+    transform-origin: top center;
+    animation-name: swingLeft;
+    }
+
+    .ball-container:last-child{
+    transform-origin: top center;
+    animation-name: swingRight;
+    animation-delay: 1s;
+    }
+
+    .ball-common{
+    animation-duration: 1s;
+    animation-direction:alternate;
+    animation-timing-function: ease-in;
+    animation-iteration-count: infinite;
+    }
+
+    .ball {
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+    background-color:black;
+    border-radius: 100px;
+    position: relative;
+    }
+
+    .string {
+    height: 300px;
+    width: 2px;
+    background-color: black;
+}
+</style>
+</head>
+<body>
+    <h1>Rohit's Cradle</h1>
+    <div class="cradle-container">
+        <div class="ball-container ball-common">
+            <div class="string"></div>
+            <div class="ball"></div>
+        </div>
+
+        <div class="ball-container">
+            <div class="string"></div>
+            <div class="ball"></div>
+        </div>
+
+        <div class="ball-container">
+            <div class="string"></div>
+            <div class="ball"></div>
+        </div>
+
+        <div class="ball-container">
+            <div class="string"></div>
+            <div class="ball"></div>
+        </div>
+
+        <div class="ball-container">
+            <div class="string"></div>
+            <div class="ball"></div>
+        </div>
+
+        <div class="ball-container">
+            <div class="string"></div>
+            <div class="ball"></div>
+        </div>
+
+        <div class="ball-container ball-common">
+            <div class="string"></div>
+            <div class="ball"></div>
+        </div>
+    </div>
+</body>
+</html>

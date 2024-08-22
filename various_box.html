@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Javascript|boxes</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<style>
+	.button
+	{
+		text-align:center;
+		font-size:20px;
+		background-color:pink;
+		font-weight:bold;
+		
+		margin:20px;
+		padding:10px;
+	}
+	</style>
+	<body>
+		<button class="button" id="mouse1" onmouseover="mouseover1()" onmouseout="mouseout1()">CONFIRM BOX</button>
+		<button class="button" id="mouse2" onmouseover="mouseover2()" onmouseout="mouseout2()">ALERT BOX</button>
+		<button class="button" id="mouse3" onmouseover="mouseover3()" onmouseout="mouseout3()">PROMPT BOX</button>
+	</body>
+	<script>
+		function mouseover1()
+		{
+			var msg;
+			if (confirm("Is this confirm box?"))
+			{
+				msg = "Yes this is a confirm box!!";
+			}
+			else
+			{
+				msg = "You pressed cancel button";
+			}
+			document.getElementById("mouse1").innerHTML = msg;
+		}
+		function mouseover2()
+		{
+			alert("This is a alert box");
+		}
+		function mouseover3()
+		{
+			let msg;
+			let message = prompt("Please enter your name");
+			if(message == null || message == "")
+			{
+				msg = "Please enter your name";
+			}
+			else
+			{
+				msg = "Hello "+message;
+			}
+			document.getElementById("mouse3").innerHTML = msg;
+		}
+	</script>
+</html>

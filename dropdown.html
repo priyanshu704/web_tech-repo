@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Javascript|Dropdown</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<style>
+		.container
+		{
+			padding:50px;
+		}
+	</style>
+	<body>
+		<div class="container">
+			<form>
+				<label>Select any file below</label>
+				<select id="prgm1" onchange="drop()" required>
+					<option  value="../L2/Time table.html">Program-1</option>
+					<option  value="../L2/resume.html">Program-2</option>
+					<option  value="../L3/tim_berners.html">Program-3</option>
+                                        <option  value="../L3/w3c.html">Program-4</option>
+					<option  value="../L4/passport.html">Program-5</option>
+					<option  value="../L5/home.html">Program-6</option>
+                                        <option  value="../L5/photo_gallery.html">Program-7</option>
+					<option  value="../L6/lunar.html">Program-8</option>
+					<option  value="../L6/pendulam.html">Program-9</option>
+					<option  value="../L7/various_box.html">Program-10</option>
+					<option  value="../L7/dropdown.html">Program-11</option>
+					
+				</select>
+			</form>
+		</div>
+		<script>
+		function drop()
+		{
+			var x = document.getElementById("prgm1").value;
+			window.open(x,"_blank");
+		}
+		</script>
+	</body>
+</html>

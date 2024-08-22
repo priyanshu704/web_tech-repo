@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<title>Javascript|New Window</title>
+	</head>
+	<style>
+	.button
+	{
+		font-size:20px;
+		font-weight:bold;
+		background-color:lavender;
+		padding:10px;
+		margin:20px;
+	}
+	</style>
+	<body>
+		<button class="button" id="new" onclick="newwindow()">Click here to open a new window</button>
+	</body>
+	<script>
+		function newwindow()
+		{
+			var newwindow;
+			newwindow=window.open("","msgwindow","height=400px width=400px");
+			newwindow.document.write("<p style=font-size:20px;>Helloooo Welcome!!!</p>");
+		}
+	</script>
+	
+</html>
