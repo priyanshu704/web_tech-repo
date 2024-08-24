@@ -1,0 +1,13 @@
+SQL> CREATE TABLE MANAGER(ENAME,JOB,DEPTNO,SAL) AS SELECT ENAME,JOB,DEPTNO,SAL FROM EMP;
+
+Table created.
+
+SQL> DESC MANAGER;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ENAME                                              VARCHAR2(10)
+ JOB                                                VARCHAR2(9)
+ DEPTNO                                             VARCHAR2(3)
+ SAL                                                NUMBER(7,2)
+
+SQL> SPOOL OFF;

@@ -1,0 +1,5 @@
+SQL> SELECT * FROM EMP WHERE COMM IS NULL;
+
+no rows selected
+
+SQL> SPOOL OFF;

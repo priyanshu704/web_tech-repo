@@ -1,0 +1,55 @@
+SQL> SELECT * FROM EMP WHERE SAL>=25200 AND SAL<=35200;
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_JOIN PRJ_ID                                                                
+--------- ----------                                                            
+       125 Manu       A.MGR                10-DEC-80      32000      12000      
+02-OCT-02 P1                                                                    
+                                                                                
+       101 Ravi       MGR              111 10-OCT-85      32000      10000 D1   
+02-OCT-01 P1                                                                    
+                                                                                
+       102 Raviraj    MGR              111 10-DEC-80      35000      10000 D1   
+12-NOV-00 P3                                                                    
+                                                                                
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_JOIN PRJ_ID                                                                
+--------- ----------                                                            
+       169 Sam        CLRK             111 10-DEC-80      35000      13000 D1   
+02-OCT-01 P3                                                                    
+                                                                                
+       121 Abdul      CLRK             102 10-DEC-79      32000      11000 D6   
+10-JAN-99 P1                                                                    
+                                                                                
+       132 Umair      MGR              108 01-NOV-64      28000      10000 D7   
+12-SEP-02 P2                                                                    
+                                                                                
+
+6 rows selected.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SPOOL OFF;
+SQL> SELECT ENAME EMPLOYEE_NAME,SAL SALARY FROM EMP WHERE SAL BETWEEN 25200 AND 35200;
+
+EMPLOYEE_N     SALARY                                                           
+---------- ----------                                                           
+Manu            32000                                                           
+Ravi            32000                                                           
+Raviraj         35000                                                           
+Sam             35000                                                           
+Abdul           32000                                                           
+Umair           28000                                                           
+
+6 rows selected.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SPOOL OFF;

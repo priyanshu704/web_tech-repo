@@ -1,0 +1,28 @@
+SQL> SELECT ENAME FROM EMP,DEPT WHERE LOCATION IN('BNG','MUB','HYD') AND EMP.DEPTNO=DEPT.DNO;
+
+ENAME                                                                           
+----------                                                                      
+Mahesh                                                                          
+Akarsh                                                                          
+Abdul                                                                           
+Umair                                                                           
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SPOOL OFF;
+SQL> SELECT ENAME FROM EMP,DEPT WHERE (LOCATION='BNG' OR LOCATION='MUB' OR LOCATION='HYD') AND EMP.DEPTNO=DEPT.DNO;
+
+ENAME                                                                           
+----------                                                                      
+Mahesh                                                                          
+Akarsh                                                                          
+Abdul                                                                           
+Umair                                                                           
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SPOOL OFF;
