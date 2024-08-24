@@ -1,0 +1,9 @@
+SQL> UPDATE EMP SET COMM=10000 WHERE JOB='MGR';
+
+4 rows updated.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SPOOL OFF;

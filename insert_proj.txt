@@ -1,0 +1,53 @@
+SQL> Insert into proj values('D1','P1','Animation',4,'23-AUG-23','23-OCT-23',400000);
+
+1 row created.
+
+SQL> Insert into proj values('D2','P1','Explorica',2,'23-AUG-23','01-JAN-24',200000);
+
+1 row created.
+
+SQL> Insert into proj values('D3','P2','Beta',3,'23-SEP-23','23-NOV-23',300000);
+
+1 row created.
+
+SQL> Insert into proj values('D1','P3','Gamma',5,'30-AUG-23','23-OCT-24',500000);
+
+1 row created.
+
+SQL> Insert into proj values('D4','P2','Revels',7,'01-SEP-23','23-FEB-24',700000);
+
+1 row created.
+
+SQL> Insert into proj values('D6','P1','Alpha',4,'23-AUG-23','23-OCT-23',400000);
+
+1 row created.
+
+SQL> Insert into proj values('D7','P2','Ace',3,'14-SEP-23','31-DEC-23',600000);
+
+1 row created.
+
+SQL> insert into proj values('D9','P2','Metallurgy',6,'03-SEP-2023','18-DEC-2023',150000);
+
+1 row created.
+
+SQL> insert into proj values('D5','P1','Filing',4,'13-JUN-2023','08-SEP-2023',250000);
+
+1 row created.
+
+SQL> select * from proj;
+
+DNO PRJ_N PRJ_NAME   PRJ_CREDIT STRT_DATE END_DATE    PRJ_FUND                  
+--- ----- ---------- ---------- --------- --------- ----------                  
+D1  P1    Animation           4 23-AUG-23 23-OCT-23     400000                  
+D2  P1    Explorica           2 23-AUG-23 01-JAN-24     200000                  
+D3  P2    Beta                3 23-SEP-23 23-NOV-23     300000                  
+D1  P3    Gamma               5 30-AUG-23 23-OCT-24     500000                  
+D4  P2    Revels              7 01-SEP-23 23-FEB-24     700000                  
+D6  P1    Alpha               4 23-AUG-23 23-OCT-23     400000                  
+D7  P2    Ace                 3 14-SEP-23 31-DEC-23     600000                  
+D9  P2    Metallurgy          6 03-SEP-23 18-DEC-23     150000                  
+D5  P1    Filing              4 13-JUN-23 08-SEP-23     250000                  
+
+9 rows selected.
+
+SQL> spool off;

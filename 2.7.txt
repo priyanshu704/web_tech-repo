@@ -1,0 +1,5 @@
+SQL> ALTER TABLE TASK ADD PRIMARY KEY(TASK_ID,DNO,PRJ_ID);
+
+Table altered.
+
+SQL> spool off;

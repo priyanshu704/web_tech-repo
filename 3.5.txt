@@ -1,0 +1,95 @@
+SQL> commit;
+
+Commit complete.
+
+SQL> delete from EMP WHERE EMPNO IN(SELECT EMPNO FROM TASK WHERE PRJ_ID='P3');
+
+15 rows deleted.
+
+SQL> SELECT * FROM EMP WHERE EMPNO IN(SELECT EMPNO FROM TASK WHERE PRJ_ID='P3');
+
+no rows selected
+
+SQL> ROLLBACK;
+
+Rollback complete.
+
+SQL> SELECT * FROM EMP WHERE EMPNO IN(SELECT EMPNO FROM TASK WHERE PRJ_ID='P3');
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_JOIN PRJ_ID                                                                
+--------- ----------                                                            
+       150 Deekshith  CEO                  10-DEC-70      60000      30000      
+03-DEC-90                                                                       
+                                                                                
+       111 Raghu      GM               150 10-DEC-74      45000      15000      
+03-DEC-85                                                                       
+                                                                                
+       125 Manu       A.MGR                10-DEC-80      32000      12000      
+02-OCT-02 P1                                                                    
+                                                                                
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_JOIN PRJ_ID                                                                
+--------- ----------                                                            
+       123 Mahesh     CLRK             150 10-DEC-74      25000      13000 D3   
+02-OCT-02 P2                                                                    
+                                                                                
+       101 Ravi       MGR              111 10-OCT-85      32000      10000 D1   
+02-OCT-01 P1                                                                    
+                                                                                
+       103 Shiv       CLRK             111 10-DEC-80      65000      33000 D1   
+02-OCT-01 P1                                                                    
+                                                                                
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_JOIN PRJ_ID                                                                
+--------- ----------                                                            
+       113 Rakesh     CLRK             111 02-OCT-80      65000      33000 D1   
+02-OCT-02 P3                                                                    
+                                                                                
+       106 Rahul      MGR              111 02-OCT-86      21000       5000 D2   
+02-OCT-02 P1                                                                    
+                                                                                
+       102 Raviraj    CLRK             106 10-DEC-80      24000       5000 D1   
+12-NOV-00 P3                                                                    
+                                                                                
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_JOIN PRJ_ID                                                                
+--------- ----------                                                            
+       104 Rohit      CLRK             125 02-OCT-80      65000      33000 D2   
+02-OCT-05 P1                                                                    
+                                                                                
+       108 Ankit      CLRK             106 10-DEC-70      23000       7000 D9   
+02-OCT-85 P2                                                                    
+                                                                                
+       169 Sam        CLRK             111 10-DEC-80      35000      13000 D1   
+02-OCT-01 P3                                                                    
+                                                                                
+
+     EMPNO ENAME      JOB            MGRID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_JOIN PRJ_ID                                                                
+--------- ----------                                                            
+       115 Akarsh     CLRK             106 10-DEC-80      23000       8000 D5   
+10-DEC-00 P1                                                                    
+                                                                                
+       121 Abdul      CLRK             102 10-DEC-79      32000      11000 D6   
+10-JAN-99 P1                                                                    
+                                                                                
+       132 Umair      MGR              108 01-NOV-64      28000       9000 D7   
+12-SEP-02 P2                                                                    
+                                                                                
+
+15 rows selected.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SPOOL OFF;

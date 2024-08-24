@@ -1,0 +1,70 @@
+SQL> INSERT INTO TASK VALUES(1,'DESIGN PHASE','P1','D1','24-AUG-24','25-OCT-24','COMPLETED');
+
+1 row created.
+
+SQL> INSERT INTO TASK VALUES(2,'DEVELOPMENT PHASE','P1','D2',23-AUG-24','01-JAN-25','IN PROGRESS');
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> INSERT INTO TASK VALUES(1,'DESIGN PHASE','P2','D3',23-SEP-24','23-NOV-24','NOT STARTED');
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> INSERT INTO TASK VALUES(2,'DEVELOPMENT PHASE','P3','D1','30-AUG-24','23-OCT-24','IN PROGRESS');
+
+1 row created.
+
+SQL> INSERT INTO TASK VALUES(3,'TESTING PHASE','P3','D1','01-SEP-24','23-FEB-25','NOT STARTED');
+
+1 row created.
+
+SQL> INSERT INTO TASK VALUES(1,'DESIGN PHASE','P1','D2','03-SEP-2023','18-DEC-2023','COMPLETED');
+
+1 row created.
+
+SQL> select * from task;
+
+   TASK_ID                                                                      
+----------                                                                      
+TASK_NAME                                                                       
+--------------------------------------------------------------------------------
+PRJ_I DNO S_DATE    E_DATE    STATUS                                            
+----- --- --------- --------- --------------------------------------------------
+         1                                                                      
+DESIGN PHASE                                                                    
+P1    D1  24-AUG-24 25-OCT-24 COMPLETED                                         
+                                                                                
+         2                                                                      
+DEVELOPMENT PHASE                                                               
+P3    D1  30-AUG-24 23-OCT-24 IN PROGRESS                                       
+
+   TASK_ID                                                                      
+----------                                                                      
+TASK_NAME                                                                       
+--------------------------------------------------------------------------------
+PRJ_I DNO S_DATE    E_DATE    STATUS                                            
+----- --- --------- --------- --------------------------------------------------
+                                                                                
+         3                                                                      
+TESTING PHASE                                                                   
+P3    D1  01-SEP-24 23-FEB-25 NOT STARTED                                       
+                                                                                
+         1                                                                      
+DESIGN PHASE                                                                    
+
+   TASK_ID                                                                      
+----------                                                                      
+TASK_NAME                                                                       
+--------------------------------------------------------------------------------
+PRJ_I DNO S_DATE    E_DATE    STATUS                                            
+----- --- --------- --------- --------------------------------------------------
+P1    D2  03-SEP-23 18-DEC-23 COMPLETED                                         
+                                                                                
+
+SQL> commit;
+
+Commit complete.
+
+SQL> spool off;

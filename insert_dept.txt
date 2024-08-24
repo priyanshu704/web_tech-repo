@@ -1,0 +1,57 @@
+SQL> insert into DEPT VALUES('D1','MARKETING','CHN',500000);
+
+1 row created.
+
+SQL> insert into DEPT VALUES('D2','RESEARCH','MNG',300000);
+
+1 row created.
+
+SQL> insert into DEPT VALUES('D3','IT','BNG',400000);
+
+1 row created.
+
+SQL> insert into DEPT VALUES('D4','HR','BNG',200000);
+
+1 row created.
+
+SQL> insert into DEPT VALUES('D5','ACCOUNTS','BNG',500000);
+
+1 row created.
+
+SQL> insert into DEPT VALUES(NULL,'CORPORATE','HYD',700000);
+
+1 row created.
+
+SQL> insert into DEPT VALUES('D6','SALES','BNG',500000);
+
+1 row created.
+
+SQL> insert into DEPT VALUES('D7','EXECUTIVE','MUB',600000);
+
+1 row created.
+
+SQL> insert into DEPT VALUES('D9','INFO.SC','CHN',350000);
+
+1 row created.
+
+SQL> SELECT * FROM DEPT;
+
+DNO DNAME      LOCATION  DEPT_BUDGET                                            
+--- ---------- --------- -----------                                            
+D1  MARKETING  CHN            500000                                            
+D2  RESEARCH   MNG            300000                                            
+D3  IT         BNG            400000                                            
+D4  HR         BNG            200000                                            
+D5  ACCOUNTS   BNG            500000                                            
+    CORPORATE  HYD            700000                                            
+D6  SALES      BNG            500000                                            
+D7  EXECUTIVE  MUB            600000                                            
+D9  INFO.SC    CHN            350000                                            
+
+9 rows selected.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SPOOL OFF;
