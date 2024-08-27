@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Passport Seva</title>
+		<meta name="viewport" content="width=device-width initial-scale=1.0">
+		<style>
+			.body{
+				border:1px solid black;
+				margin-left:25%;
+				padding:10px;
+				width:50%;	
+				background:#cccccc;
+				box-shadow:0 0 8px #808080;
+			}
+			.heading{
+				margin-left:10px;
+			}
+			.header{
+				display:flex;
+			}
+			h4{
+				margin:0;
+				padding:0;
+			}
+			img{
+				height:150px;
+				width:150px;
+			}
+			hr{
+				margin:5px;
+			}
+			.impinfo{
+				display:flex;
+			}
+			sup{
+				color:red;
+			}
+			form{
+				display:flex;
+				flex-direction:column;
+			}
+			.form_row{
+				display:flex;
+				align-items:center;
+				margin:10px;
+			}
+			label {
+				width: 300px;
+				text-align: left;
+			}
+			.bttn{
+				padding:10px 20px;
+			}
+			.b1{
+				margin-left:30%;
+			}
+			.b1,.b2{
+				background-color:#88e26a;
+				padding:5px 15px;
+				width:120px;
+			}
+			.b1:hover{
+				background-color:#009933;
+			}
+			.b2:hover{
+				background-color:#009933;
+			}
+			
+		</style>
+	</head>
+	<body>
+	<div class="body">
+	<div class="header">
+		<div class="logo">
+			<img src="https://th.bing.com/th/id/OIP.LA8sJoDFRAq6teXhvbv9KAHaHg?w=187&h=189&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="logo">
+		</div>
+		<div class="heading">
+			<h1>Passport Seva</h1>
+			<h4>PSP Divison</h4>
+			<h4>Ministry of External Affairs,Government of India</h4>
+		</div>
+	</div>
+	
+	<hr>
+	
+	<div class="container">
+		<h2>User Registration</h2>
+		<div class="impinfo">
+			<p><b>Important Information:</b>Passport application can be processed at any<br>PSK/POPSK/PSLK WITHIN INDIA irrespective of your residential address.</p>
+			<small>Fields marked with asterisk (<sup>*</sup>) are mandatory
+		</div>
+		<ul>
+			<li><a href="passport.html">Click Here</a> to check the appointment availability at all PSK/POPSK/PSLK</li>
+			<li><a href="passport.html">Click Here</a> to know more about Apply Anywhere in India scheme for Passport Services.</li>
+		</ul>
+	</div>
+	
+	<form method="post" action="">
+		<div class="form_row">
+			<label for="register">Register to apply at<sup>*</sup></label>
+			
+			<label>
+				<input type="radio" name="btn" value="CPV" id="CPV">
+				<label for="CPV" id="CPV">CPV Delhi</label>
+				
+				<br>
+			
+				<input type="radio" name="btn" value="passport" id="passport" checked>
+				<label for="passport" id="passport">Passport Office</label>
+			</label> 
+			
+			<small>Select the 'CPV Delhi' option to apply for Diplomatic/Official<br>
+			passport at Consular, Passport and Visa (CPV) division, Delhi.</small>	
+		</div>
+		
+		<div class="form_row">
+			<label for="Name">Given Name<small>(Max 45 Characters)<sup>*</sup></small></label>
+			
+			<label>
+				<input type="text" name="name" required>
+			</label>
+			
+			<small>First Name + Middle Name<br>
+			Initials and honorifics (e.g. Dr.,Col.,etc.) are not allowed.</small>
+		</div>
+		
+		<div class="form_row">
+			<label for="Surname">Surname<small>(Max 45 Characters)</small></label>
+			<label>
+				<input type="text" name="name">
+			</label>
+		</div>
+		
+		<div class="form_row">
+			<label for="date">Date of Birth (DD/MM/YYYY)<sup>*</sup></label>
+			<label for="date">
+				<input type="date" name="date"required>
+			</label>
+		</div>
+		
+		<div class="form_row">
+			<label for="email">E-mail Id <small>(Max 35 Characters)*</small><sup>*</sup></label>
+			<label for="date">
+				<input type="email" name="email"required>
+			</label>
+		</div>
+		
+		<div class="form_row">
+			<label for="register">Do you want your Login Id<br>
+				to be same as E-mail Id?</label>
+			
+			<label>
+				<input type="radio" name="btn" value="no" id="no" checked>
+				<label for="no" id="no">No</label>
+			
+				<input type="radio" name="btn" value="yes" id="yes">
+				<label for="yes" id="yes">Yes</label>
+			</label>
+		</div>
+		
+		<div class="form_row">
+			<label for="loginid">Login id<sup>*</sup></label>
+			<label>
+				<input type="text" name="name" required>
+			</label>
+			<a class="av" href="passport.html">Check Availability</a>
+		</div>
+		
+		<div class="form_row">
+			<label for="Surname">Password<sup>*</sup></label>
+			<label>
+				<input type="password" name="password" required>
+			</label>
+			<a href="passport.html">Password Policy</a>
+		</div>
+		
+		<div class="form_row">
+			<label for="confirm">Confirm Password<sup>*</sup></label>
+			<label>
+				<input type="password" name="password" required>
+			</label>
+		</div>
+		
+		<div class="form_row">
+			<label for="hint">Hint Question<sup>*</sup></label>
+			<label>
+				<select id="hint" name="hint" required>
+					<option value="Select" disabled selected>---Select---</option>
+					<option value="birth_city">Birth city</option>
+					<option value="color">Favourite color</option>
+					<option value="cricket">Favourite cricketer</option>
+					<option value="food">Favourite Food</option>
+					<option value="school">First School</option>
+					<option value="car">Make of First car Owned</option>
+					<option value="mother">Mother's Middle Name</option>
+				</select>
+			</label>
+		</div>
+		
+		<div class="form_row">
+			<label for="hintAns">Hint Answer<sup>*</sup></label>
+			<label>
+				<input type="text" name="ans" required>
+			</label>
+		</div>
+		
+		<div class="form_row">
+			<label for="cap">Enter Characters Displayed<sup>*</sup></label>
+			<label>
+				<input type="text" name="cap" required>
+			</label>
+		</div>
+		
+		<div class="bttn">
+				<input class="b1" type="submit" name="register" value="register">
+				<input class="b2" type="reset" name="clear" value="clear">
+		</div>
+		
+	</form>
+	</div>
+	</body>
+</html>
