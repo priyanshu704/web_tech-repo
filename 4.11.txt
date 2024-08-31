@@ -1,0 +1,44 @@
+SQL> select * from TASK where (E_DATE-S_DATE)>7;
+
+   TASK_ID                                                                      
+----------                                                                      
+TASK_NAME                                                                       
+--------------------------------------------------------------------------------
+PRJ_I DNO S_DATE    E_DATE    STATUS                                            
+----- --- --------- --------- --------------------------------------------------
+         1                                                                      
+DESIGN PHASE                                                                    
+P1    D1  24-AUG-24 25-OCT-24 COMPLETED                                         
+                                                                                
+         2                                                                      
+DEVELOPMENT PHASE                                                               
+P3    D1  30-AUG-24 23-OCT-24 IN PROGRESS                                       
+
+   TASK_ID                                                                      
+----------                                                                      
+TASK_NAME                                                                       
+--------------------------------------------------------------------------------
+PRJ_I DNO S_DATE    E_DATE    STATUS                                            
+----- --- --------- --------- --------------------------------------------------
+                                                                                
+         3                                                                      
+TESTING PHASE                                                                   
+P3    D1  01-SEP-24 23-FEB-25 NOT STARTED                                       
+                                                                                
+         1                                                                      
+DESIGN PHASE                                                                    
+
+   TASK_ID                                                                      
+----------                                                                      
+TASK_NAME                                                                       
+--------------------------------------------------------------------------------
+PRJ_I DNO S_DATE    E_DATE    STATUS                                            
+----- --- --------- --------- --------------------------------------------------
+P1    D2  03-SEP-23 18-DEC-23 COMPLETED                                         
+                                                                                
+
+SQL> select * from TASK where (E_DATE-S_DATE)<7;
+
+no rows selected
+
+SQL> SPOOL OFF;

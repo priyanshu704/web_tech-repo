@@ -1,0 +1,24 @@
+SQL> SELECT ENAME FROM EMP WHERE EMPNO=111;
+
+ENAME                                                                           
+----------                                                                      
+Raghu                                                                           
+
+SQL> SELECT ENAME FROM EMP WHERE MGRID=111;
+
+ENAME                                                                           
+----------                                                                      
+Ravi                                                                            
+Shiv                                                                            
+Rakesh                                                                          
+Rahul                                                                           
+Raviraj                                                                         
+Sam                                                                             
+
+6 rows selected.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SPOOL OFF;

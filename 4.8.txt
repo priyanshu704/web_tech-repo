@@ -1,0 +1,13 @@
+SQL> desc manager;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ENAME                                              VARCHAR2(10)
+ JOB                                                VARCHAR2(9)
+ DEPTNO                                             VARCHAR2(3)
+ SAL                                                NUMBER(7,2)
+
+SQL> SELECT PRJ_NO,PRJ_NAME FROM PROJ WHERE DNO='D2' AND PRJ_CREDIT>5;
+
+no rows selected
+
+SQL> SPOOL OFF;
