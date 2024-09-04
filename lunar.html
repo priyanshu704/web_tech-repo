@@ -1,59 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lunar Eclipse | Animation</title>
-
+<html>
+    <head><title>LUNAR ECLIPSE</title>
     <style>
-        {
-        margin: 0px;
-        padding: 0px;
-        box-sizing: border-box;
+        *{
+            box-sizing: border-box;
+        }
+       
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            margin: 0;
         }
 
-        body{
-        background-color: black;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
+        #container {
+            position: relative;
+            width: 200px;
+            height: 200px;
         }
 
-        .moon{
-        height: 200px;
-        width: 200px;
-        border-radius: 200px;
-        background-color: white;
-        position: relative;
-        box-shadow: 0 0 40px 40px #ffffff6e;
+        #moon {
+            position: absolute;
+            width: 20%;
+            height: 20%;
+            background-color: #f0f0f0;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
         }
 
-        .shadow{
-        height: 200px;
-        width: 200px;
-        position: absolute;
-        border-radius: 100px;
-        left: -200%;                            
-        background-color: black;
-        animation-name: slide;
-        animation-timing-function: linear;
-        animation-duration: 10s;
+        #eclipse {
+            position: absolute;
+            width: 20%;
+            height: 20%;
+            background-color: #000;
+            border-radius: 50%;
+            animation: eclipse-animation 5s infinite;
         }
 
-        @keyframes slide{
-        from {
-        left: -180%;
-        }
-        to{
-        left: 150%;
-        }
-        }
-   </style>
-</head>
-<body>
-    <div class="moon">
-        <div class="shadow"></div>
-    </div>
-</body>
+        @keyframes eclipse-animation {
+            0% {
+                    transform: translateX(100%);
+            }
+            100% {
+                    transform: translateX(-100%);
+            }
+        }  
+
+    </style></head>
+    <body>
+        <div id="container"></div>
+        <DIV id="moon"></DIV>
+            <div id="eclipse"></div>
+        </DIV>
+    </body>
 </html>
