@@ -1,0 +1,172 @@
+SQL> SET SERVEROUTPUT ON
+SQL> DECLARE
+  2     v_ename emp.ename%TYPE;
+  3     v_sal emp.sal%TYPE;
+  4  
+  5     CURSOR emp_cursor IS
+  6        SELECT ename, sal
+  7        FROM emp
+  8        WHERE sal > 30000;
+  9  BEGIN
+ 10  
+ 11     OPEN emp_cursor;
+ 12  
+ 13     LOOP
+ 14        FETCH emp_cursor INTO v_ename, v_sal;
+ 15        EXIT WHEN emp_cursor%NOTFOUND;
+ 16  
+ 17  
+ 18        DBMS_OUTPUT.PUT_LINE('Employee Name: ' || v_ename || ', Salary: ' || v_sal);
+ 19     END LOOP;
+ 20  
+ 21  
+ 22     CLOSE emp_cursor;
+ 23  END;
+ 24  /
+Employee Name: Deekshith, Salary: 60000                                         
+Employee Name: Raghu, Salary: 45000                                             
+Employee Name: Manu, Salary: 32000                                              
+Employee Name: Mahesh, Salary: 35000                                            
+Employee Name: Ravi, Salary: 32000                                              
+Employee Name: Shiv, Salary: 65000                                              
+Employee Name: Rakesh, Salary: 65000                                            
+Employee Name: Rohit, Salary: 65000                                             
+Employee Name: Sam, Salary: 35000                                               
+Employee Name: Abdul, Salary: 32000                                             
+
+PL/SQL procedure successfully completed.
+
+SQL> DECLARE
+  2     v_project_id VARCHAR2(10) := UPPER('&Project_Id');
+  3     v_prj_credits NUMBER;
+  4     v_prj_fund NUMBER;
+  5     v_dept_budget NUMBER;
+  6  
+  7  
+  8     CURSOR prj_info_cursor(p_project_id VARCHAR2) IS
+  9        SELECT prj_credit, prj_fund
+ 10        FROM proj
+ 11        WHERE prj_no = p_project_id;
+ 12  
+ 13  
+ 14     CURSOR emp_cursor(p_project_id VARCHAR2) IS
+ 15        SELECT empno, deptno, prj_id
+ 16        FROM emp
+ 17        WHERE prj_id = p_project_id;
+ 18  
+ 19  BEGIN
+ 20  
+ 21     OPEN prj_info_cursor(v_project_id);
+ 22  
+ 23     FETCH prj_info_cursor INTO v_prj_credits, v_prj_fund;
+ 24  
+ 25     CLOSE prj_info_cursor;
+ 26  
+ 27     v_dept_budget := (v_prj_credits / 100) * v_prj_fund * 0.30;
+ 28  
+ 29  
+ 30     FOR emp_rec IN emp_cursor(v_project_id) LOOP
+ 31  
+ 32        DECLARE
+ 33           v_incent_amt NUMBER;
+ 34        BEGIN
+ 35           v_incent_amt := (v_prj_credits / 100) * v_prj_fund * 0.70;
+ 36  
+ 37  
+ 38           UPDATE emp
+ 39           SET sal = sal + (v_incent_amt / (SELECT COUNT(*) FROM emp WHERE deptno = emp_rec.deptno AND prj_id = emp_rec.prj_id))
+ 40           WHERE empno = emp_rec.empno;
+ 41  
+ 42           UPDATE dept
+ 43           SET dept_budget = dept_budget + v_dept_budget
+ 44           WHERE dno = emp_rec.deptno;
+ 45        END;
+ 46  
+ 47     END LOOP;
+ 48  
+ 49     DBMS_OUTPUT.PUT_LINE('Incentives allocated successfully.');
+ 50  END;
+ 51  /
+Enter value for project_id: p2
+old   2:    v_project_id VARCHAR2(10) := UPPER('&Project_Id');
+new   2:    v_project_id VARCHAR2(10) := UPPER('p2');
+Incentives allocated successfully.                                              
+
+PL/SQL procedure successfully completed.
+
+SQL> SET SERVEROUTPUT ON
+SQL> DECLARE
+  2     v_ename emp.ename%TYPE;
+  3     v_job emp.job%TYPE;
+  4     v_deptno emp.deptno%TYPE;
+  5     CURSOR emp1_cursor(p_job VARCHAR2, p_deptno VARCHAR2) IS
+  6        SELECT ename, job, deptno
+  7        FROM emp
+  8        WHERE job = p_job AND deptno = p_deptno;
+  9  BEGIN
+ 10     v_job := UPPER('&v_job');
+ 11     v_deptno := UPPER('&v_deptno');
+ 12     FOR emp_record IN emp1_cursor(v_job, v_deptno) LOOP
+ 13        v_ename := emp_record.ename;
+ 14        v_job := emp_record.job;
+ 15        v_deptno := emp_record.deptno;
+ 16        DBMS_OUTPUT.PUT_LINE('Employee Name: ' || v_ename || ', Job: ' || v_job || ', Deptno: ' || v_deptno);
+ 17     END LOOP;
+ 18  END;
+ 19  /
+Enter value for v_job: clrk
+old  10:    v_job := UPPER('&v_job');
+new  10:    v_job := UPPER('clrk');
+Enter value for v_deptno: d1
+old  11:    v_deptno := UPPER('&v_deptno');
+new  11:    v_deptno := UPPER('d1');
+Employee Name: Rakesh, Job: CLRK, Deptno: D1                                    
+Employee Name: Raviraj, Job: CLRK, Deptno: D1                                   
+Employee Name: Sam, Job: CLRK, Deptno: D1                                       
+Employee Name: Shiv, Job: CLRK, Deptno: D1                                      
+
+PL/SQL procedure successfully completed.
+
+SQL> SET SERVEROUTPUT ON
+SQL> DECLARE
+  2     v_prj_id VARCHAR2(10):= UPPER('&Prj_Id');
+  3     v_row_count NUMBER := 0;
+  4  
+  5   v_emp_name emp.ename%TYPE;
+  6     v_emp_salary emp.sal%TYPE;
+  7     v_department_name dept.dname%TYPE;
+  8  
+  9     CURSOR emp_cursor(p_prj_id VARCHAR2) IS
+ 10        SELECT e.ename AS emp_name,
+ 11               e.sal AS emp_salary,
+ 12               d.dname AS department_name
+ 13        FROM emp e, dept d
+ 14        WHERE e.deptno = d.dno
+ 15        AND e.prj_id = p_prj_id
+ 16        ORDER BY e.sal DESC;
+ 17  BEGIN
+ 18     DBMS_OUTPUT.PUT_LINE('Highest Paid Employees on Project ' || v_prj_id || ':');
+ 19  
+ 20     FOR emp_record IN emp_cursor(v_prj_id) LOOP
+ 21        EXIT WHEN v_row_count >=2;
+ 22  
+ 23        v_emp_name := emp_record.emp_name;
+ 24        v_emp_salary := emp_record.emp_salary;
+ 25        v_department_name := emp_record.department_name;
+ 26  
+ 27        DBMS_OUTPUT.PUT_LINE('Employee Name: ' || v_emp_name || ', Salary: ' || v_emp_salary || ', Department: ' || v_department_name);
+ 28        v_row_count := v_row_count + 1;
+ 29     END LOOP;
+ 30  
+ 31  END;
+ 32  /
+Enter value for prj_id: p2
+old   2:    v_prj_id VARCHAR2(10):= UPPER('&Prj_Id');
+new   2:    v_prj_id VARCHAR2(10):= UPPER('p2');
+Highest Paid Employees on Project P2:                                           
+Employee Name: Mahesh, Salary: 41300, Department: IT                            
+Employee Name: Manu, Salary: 38300, Department: HR                              
+
+PL/SQL procedure successfully completed.
+
+SQL> spool off;

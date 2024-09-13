@@ -1,0 +1,148 @@
+SQL> create or replace procedure simpleinterest(p in number,t in number,r in number,si out number) is
+  2  begin
+  3  	dbms_output.put_line('simple interest:'||(p*t*r)/100);
+  4  end;
+  5  /
+
+Procedure created.
+
+SQL> var si number
+SQL>  exec simpleinterest(10000,10,2,:si);
+simple interest:2000                                                            
+
+PL/SQL procedure successfully completed.
+
+SQL> CREATE OR REPLACE PROCEDURE p_emp(v_dname IN VARCHAR2) IS
+  2    CURSOR cur_emp IS
+  3      SELECT prj_name, ename
+  4      FROM proj p, dept d, emp e
+  5      WHERE d.dname = v_dname
+  6      AND d.dno = p.dno
+  7      AND e.deptno = d.dno
+  8      AND p.prj_no = e.prj_id
+  9      GROUP BY prj_name, ename;
+ 10  BEGIN
+ 11    FOR i IN cur_emp
+ 12    LOOP
+ 13      DBMS_OUTPUT.PUT_LINE(i.prj_name || ' ' || i.ename);
+ 14    END LOOP;
+ 15  END;
+ 16  /
+
+Procedure created.
+
+SQL> CREATE OR REPLACE FUNCTION emp_age(v_birth_date IN DATE) RETURN NUMBER IS
+  2    v_current_year NUMBER;
+  3    v_birth_year NUMBER;
+  4    v_date NUMBER;
+  5  BEGIN
+  6    SELECT TO_CHAR(SYSDATE, 'YYYY')-TO_CHAR(v_birth_date, 'YYYY') INTO v_date FROM DUAL;
+  7    RETURN v_date;
+  8  END;
+  9  /
+
+Function created.
+
+SQL> CREATE OR REPLACE FUNCTION emp_exp(v_join_date IN DATE) RETURN NUMBER IS
+  2       v_current_year NUMBER;
+  3       v_join_year NUMBER;
+  4       v_exp NUMBER;
+  5     BEGIN
+  6      SELECT TO_CHAR(SYSDATE, 'YYYY')-TO_CHAR(v_join_date, 'YYYY') INTO v_exp FROM DUAL;
+  7   RETURN v_exp;
+  8     END emp_exp;
+  9    /
+
+Function created.
+
+SQL> set serveroutput on
+SQL> declare
+  2  v_age date;
+  3  v_date date;
+  4  cursor cur_age is SELECT date_birth,date_join from emp;
+  5  begin
+  6  for i in cur_age
+  7  LOOP
+  8  v_age:=i.date_birth;
+  9  dbms_output.put_line('age of each employee is:'||emp_age(v_age));
+ 10  dbms_output.put_line('Experience of each employee is:'||emp_exp(i.date_join));
+ 11  end loop;
+ 12  end;
+ 13  /
+age of each employee is:53                                                      
+Experience of each employee is:33                                               
+age of each employee is:49                                                      
+Experience of each employee is:38                                               
+age of each employee is:43                                                      
+Experience of each employee is:21                                               
+age of each employee is:49                                                      
+Experience of each employee is:21                                               
+age of each employee is:38                                                      
+Experience of each employee is:22                                               
+age of each employee is:43                                                      
+Experience of each employee is:22                                               
+age of each employee is:43                                                      
+Experience of each employee is:21                                               
+age of each employee is:37                                                      
+Experience of each employee is:21                                               
+age of each employee is:43                                                      
+Experience of each employee is:23                                               
+age of each employee is:43                                                      
+Experience of each employee is:18                                               
+age of each employee is:53                                                      
+Experience of each employee is:38                                               
+age of each employee is:43                                                      
+Experience of each employee is:22                                               
+age of each employee is:43                                                      
+Experience of each employee is:23                                               
+age of each employee is:44                                                      
+Experience of each employee is:24                                               
+age of each employee is:59                                                      
+Experience of each employee is:21                                               
+
+PL/SQL procedure successfully completed.
+
+SQL> CREATE OR REPLACE FUNCTION calculate_total_project_fund(dept_number in varchar2) RETURN NUMBER IS
+  2    total_fund NUMBER := 0;
+  3  BEGIN
+  4    SELECT SUM(prj_fund)
+  5    INTO total_fund
+  6    FROM proj
+  7    WHERE dno = dept_number;
+  8  
+  9    RETURN total_fund;
+ 10  END calculate_total_project_fund;
+ 11  /
+
+Function created.
+
+SQL> SET SERVEROUTPUT ON;
+SQL> DECLARE
+  2    v_deptno proj.dno%TYPE;
+  3    v_total_fund NUMBER;
+  4  
+  5    CURSOR dept_cursor IS
+  6      SELECT DISTINCT dno FROM proj;
+  7  BEGIN
+  8    OPEN dept_cursor;
+  9    LOOP
+ 10      FETCH dept_cursor INTO v_deptno;
+ 11      EXIT WHEN dept_cursor%NOTFOUND;
+ 12      v_total_fund := calculate_total_project_fund(v_deptno);
+ 13      DBMS_OUTPUT.PUT_LINE('Department ' || v_deptno || ' has received Rs. ' || v_total_fund || '/-');
+ 14    END LOOP;
+ 15    CLOSE dept_cursor;
+ 16  END;
+ 17  /
+Department D1 has received Rs. 900000/-                                         
+Department D2 has received Rs. 200000/-                                         
+Department D3 has received Rs. 300000/-                                         
+Department D4 has received Rs. 700000/-                                         
+Department D5 has received Rs. 250000/-                                         
+Department D6 has received Rs. 400000/-                                         
+Department D7 has received Rs. 600000/-                                         
+Department D9 has received Rs. 150000/-                                         
+
+PL/SQL procedure successfully completed.
+
+SQL> spool off;

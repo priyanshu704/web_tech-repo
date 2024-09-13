@@ -1,0 +1,63 @@
+SQL> create table sal_mod(
+  2  	emp_no number(4),
+  3  	dname varchar2(20),
+  4  	old_sal number(11,2),
+  5  	mod_date date,
+  6  	modifier varchar(20)
+  7  );
+
+Table created.
+ 
+SQL> set serveroutput on;
+SQL>   create or replace trigger sal_up after update of sal on emp for each row
+  2           declare
+  3               dept_name dept.dname%type;
+  4            begin
+  5                select dname into dept_name from dept where dno = :old.deptno;
+  6               if updating ('sal') then
+  7                        dbms_output.put_line('Emp no = ' || :old.empno || '-- Old salary = ' || :old.sal || '-- New salary = '
+  8                       || :new.sal || ' Department = ' || dept_name);
+  9                        insert into sal_mod values(:old.empno,dept_name,:old.sal,sysdate,user);
+ 10            end if;
+ 11          end;
+ 12        /
+
+Trigger created.
+
+
+SQL> create or replace trigger trig1 after update on proj for each row
+  2  
+  3         declare
+  4             proj_duration number(10);
+  5            lapsed_duration number(10);
+  6             fund number(10);
+  7          begin
+  8            proj_duration := :old.end_date - :old.strt_date;
+  9             lapsed_duration := sysdate - :old.strt_date;
+ 10           if lapsed_duration < (0.5 * proj_duration) then
+ 11                   fund := (:new.prj_fund - :old.prj_fund ) * 0.7;
+ 12                   dbms_output.put_line('you are eligible for Rs.' || fund );
+ 13           else
+ 14                   fund := (:new.prj_fund - :old.prj_fund ) * 0.4;
+ 15                   dbms_output.put_line('you are eligible for Rs.' || fund );
+ 16           end if;
+ 17        end;
+ 18    /
+
+Warning: Trigger created with compilation errors.
+
+
+SQL> set serveroutput on;
+SQL>   create or replace trigger trig before insert or update or delete on emp for each row
+  2         begin
+  3            if inserting or updating or deleting then
+  4                    if to_char(sysdate,'DY') = 'SUN' or to_char(sysdate,'DY') = 'SAT' then
+  5                            raise_application_error(-20111,'No changes can be made');
+  6                     end if;
+  7             end if;
+  8          end;
+  9          /
+
+Trigger created.
+
+SQL> spool off;
