@@ -1,0 +1,155 @@
+SQL> DECLARE
+  2      n        INTEGER;
+  3      temp_sum INTEGER;
+  4      r        INTEGER;
+  5  BEGIN
+  6      n := 123456;
+  7      temp_sum := 0;
+  8      WHILE n <> 0 LOOP
+  9          r := MOD(n, 10);
+ 10          temp_sum := temp_sum + r;
+ 11          n := Trunc(n / 10);
+ 12      END LOOP;
+ 13      dbms_output.Put_line('sum of digits = '|| temp_sum);
+ 14  END;
+ 15  /
+
+PL/SQL procedure successfully completed.
+
+SQL> DECLARE
+  2      s VARCHAR2(10) := 'nayan';
+  3      l VARCHAR2(20);
+  4      t VARCHAR2(10);
+  5  BEGIN
+  6      FOR i IN REVERSE 1..Length(s) LOOP
+  7          l := Substr(s, i, 1);
+  8          t := t ||''||l;
+  9      END LOOP;
+ 10  
+ 11      IF t = s THEN
+ 12        dbms_output.Put_line(t ||''||' is palindrome');
+ 13      ELSE
+ 14        dbms_output.Put_line(t ||''||' is not palindrome');
+ 15      END IF;
+ 16  END;
+ 17  /
+
+PL/SQL procedure successfully completed.
+
+SQL> SET SERVEROUTPUT ON
+SQL> 
+SQL> DECLARE
+  2  
+  3      v_emp_number EMP.EMPNO%TYPE;
+  4     v_emp_name VARCHAR2(50);
+  5      v_dept_name VARCHAR2(50);
+  6      v_salary NUMBER;
+  7  
+  8  BEGIN
+  9  
+ 10      v_emp_number:=&employee_number;
+ 11  
+ 12      SELECT UPPER(e.ename), d.dname, e.sal
+ 13      INTO v_emp_name, v_dept_name, v_salary
+ 14      FROM emp e
+ 15      JOIN dept d ON e.deptno = d.dno
+ 16      WHERE e.empno = v_emp_number;
+ 17  
+ 18      DBMS_OUTPUT.PUT_LINE(v_emp_name || ' works in ' || v_dept_name || ' department and draws ' || v_salary || '/- as salary');
+ 19  
+ 20  END;
+ 21  /
+Enter value for employee_number: 115
+old  10:     v_emp_number:=&employee_number;
+new  10:     v_emp_number:=115;
+AKARSH works in Accounts department and draws 23000/- as salary                 
+
+PL/SQL procedure successfully completed.
+
+/*create table EMPSAL(Empno number(10),Empname varchar2(25),Sal number(10),HRA number(10,2),DA number(10,2),Gross_Sal number(10,2),PF number(10,2),Net_Sal number(10,2));*/
+
+
+SET SERVEROUTPUT ON
+
+DECLARE
+
+    v_empno EMP.empno%TYPE;
+    v_empname EMP.ename%TYPE;
+    v_sal EMP.sal%TYPE;
+    v_hra NUMBER;
+    v_da NUMBER;
+    v_gross_salary NUMBER;
+    v_pf NUMBER;
+    v_net_salary NUMBER;
+
+BEGIN
+
+    v_empno := &employee_number; 
+
+    SELECT ename, sal
+    INTO v_empname, v_sal
+    FROM emp
+    WHERE empno = v_empno;
+
+
+    v_hra := 0.5 * v_sal;
+    v_da := 0.2 * v_sal;
+    v_gross_salary := v_sal + v_hra + v_da;
+    v_pf := 0.12 * v_sal;
+    v_net_salary := v_gross_salary - v_pf;
+
+    INSERT INTO EMPSAL (empno, empname, sal, hra, da, gross_sal, pf, net_sal)
+    VALUES (v_empno, v_empname, v_sal, v_hra, v_da, v_gross_salary, v_pf, v_net_salary);
+
+    DBMS_OUTPUT.PUT_LINE('Employee Name: ' || v_empname);
+    DBMS_OUTPUT.PUT_LINE('HRA: ' || v_hra);
+    DBMS_OUTPUT.PUT_LINE('DA: ' || v_da);
+    DBMS_OUTPUT.PUT_LINE('Gross Salary: ' || v_gross_salary);
+    DBMS_OUTPUT.PUT_LINE('PF: ' || v_pf);
+    DBMS_OUTPUT.PUT_LINE('Net Salary: ' || v_net_salary);
+
+END;
+/
+
+Enter value for employee_number: 169
+old  14:     v_empno := &employee_number;
+new  14:     v_empno := 169;
+Employee Name: Sanath
+HRA: 20416.665
+DA: 8166.666
+Gross Salary: 69416.661
+PF: 4899.9996
+Net Salary: 64516.6614
+
+PL/SQL procedure successfully completed.
+
+/*create table Circle(radius number(10,2) , area number(10,2));*/
+
+set serveroutput on
+DECLARE
+    v_radius NUMBER;
+    v_area NUMBER;
+BEGIN
+    FOR v_radius IN 3..7 LOOP
+        v_area := 3.1415 * POWER(v_radius, 2);
+	DBMS_OUTPUT.PUT_LINE('radius = ' || round(v_radius,2) ||' '|| 'area = ' || round(v_area,2));
+        
+        INSERT INTO CIRCLE (radius, area) VALUES (v_radius, v_area);
+    END LOOP;
+    
+    COMMIT;
+    DBMS_OUTPUT.PUT_LINE('Data inserted into the CIRCLE table.');
+END;
+/
+
+radius = 3 area = 28.27
+radius = 4 area = 50.27
+radius = 5 area = 78.54
+radius = 6 area = 113.1
+radius = 7 area = 153.94
+Data inserted into the CIRCLE table.
+
+PL/SQL procedure successfully completed.
+
+
+SQL> spool off;
