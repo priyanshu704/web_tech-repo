@@ -1,0 +1,29 @@
+SQL> select ename,sal from emp where sal>(select min(sal) from emp);
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+Deekshith       60000                                                           
+Raghu           45000                                                           
+Manu            32000                                                           
+Mahesh          25000                                                           
+Ravi            32000                                                           
+Shiv            65000                                                           
+Rakesh          65000                                                           
+Raviraj         35000                                                           
+Rohit           65000                                                           
+Ankit           23000                                                           
+Sam             35000                                                           
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+Akarsh          23000                                                           
+Abdul           32000                                                           
+Umair           28000                                                           
+
+14 rows selected.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> spool off;

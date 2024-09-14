@@ -1,0 +1,12 @@
+SQL> select count(ename) from emp where to_char(date_join,'DD')>15;
+
+COUNT(ENAME)                                                                    
+------------                                                                    
+           0                                                                    
+
+SQL> commit
+  2  ;
+
+Commit complete.
+
+SQL> spool off;

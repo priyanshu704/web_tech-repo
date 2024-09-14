@@ -1,0 +1,60 @@
+SQL> select p.prj_no,p.pname,
+  2  
+SQL> desc task;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ TASK_ID                                   NOT NULL NUMBER(3)
+ TASK_NAME                                          VARCHAR2(100)
+ PRJ_ID                                    NOT NULL VARCHAR2(5)
+ DNO                                       NOT NULL VARCHAR2(3)
+ S_DATE                                             DATE
+ E_DATE                                             DATE
+ STATUS                                             VARCHAR2(50)
+
+SQL> SELECT
+  2      prj_id,
+  3      SUM(TO_NUMBER(STR_TO_DATE(e_date, 'YYYY-MM-DD') - STR_TO_DATE(s_date, 'YYYY-MM-DD'))) AS total_duration,
+  4      AVG(TO_NUMBER(STR_TO_DATE(e_date, 'YYYY-MM-DD') - STR_TO_DATE(s_date, 'YYYY-MM-DD'))) AS average_duration
+  5  FROM
+  6      tasks
+  7  GROUP BY
+  8      prj_id;
+    tasks
+    *
+ERROR at line 6:
+ORA-00942: table or view does not exist 
+
+
+SQL> SELECT
+  2      prj_id,
+  3      SUM(TO_NUMBER(STR_TO_DATE(e_date, 'YYYY-MM-DD') - STR_TO_DATE(s_date, 'YYYY-MM-DD'))) AS total_duration,
+  4      AVG(TO_NUMBER(STR_TO_DATE(e_date, 'YYYY-MM-DD') - STR_TO_DATE(s_date, 'YYYY-MM-DD'))) AS average_duration
+  5  FROM
+  6      task
+  7  GROUP BY
+  8      prj_id;
+    AVG(TO_NUMBER(STR_TO_DATE(e_date, 'YYYY-MM-DD') - STR_TO_DATE(s_date, 'YYYY-MM-DD'))) AS average_duration
+                                                      *
+ERROR at line 4:
+ORA-00904: "STR_TO_DATE": invalid identifier 
+
+
+SQL> SELECT
+  2      prj_id,
+  3      SUM(TO_NUMBER(TO_DATE(e_date, 'YYYY-MM-DD') - TO_DATE(s_date, 'YYYY-MM-DD'))) AS total_duration,
+  4      AVG(TO_NUMBER(TO_DATE(e_date, 'YYYY-MM-DD') - TO_DATE(s_date, 'YYYY-MM-DD'))) AS average_duration
+  5  FROM
+  6      task
+  7  GROUP BY
+  8      prj_id;
+
+PRJ_I TOTAL_DURATION AVERAGE_DURATION                                           
+----- -------------- ----------------                                           
+P1              5996             2998                                           
+P3              5328             2664                                           
+
+SQL> commit;
+
+Commit complete.
+
+SQL> spool off;

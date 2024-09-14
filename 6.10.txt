@@ -1,0 +1,50 @@
+SQL> create View emp_PRJ_VW as select ename,prj_id from emp where DEPTNO=(Select DNO from dept where dname='Marketing');
+
+View created.
+
+SQL> select * from emp_PRJ_VW;
+
+no rows selected
+
+SQL> create View emp_PRJ_VW as select ename,prj_id from emp where DEPTNO=(Select DNO from dept where dname='Marketing');
+create View emp_PRJ_VW as select ename,prj_id from emp where DEPTNO=(Select DNO from dept where dname='Marketing')
+            *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> select * from emp_PRJ_VW;
+
+no rows selected
+
+SQL> drop view emp_prj_vw;
+
+View dropped.
+
+SQL> create view EMP_PRJ_VW AS select e.ename,p.prj_name from emp e join dept d on e.deptno=d.dno join proj p on e.prj_id=p.prj_no where d.dname='MARKETING';
+
+View created.
+
+SQL> select * from emp_PRJ_VW;
+
+ENAME      PRJ_NAME                                                             
+---------- ----------                                                           
+Ravi       Animation                                                            
+Shiv       Animation                                                            
+Ravi       Explorica                                                            
+Shiv       Explorica                                                            
+Rakesh     Gamma                                                                
+Raviraj    Gamma                                                                
+Sam        Gamma                                                                
+Ravi       Alpha                                                                
+Shiv       Alpha                                                                
+Ravi       Filing                                                               
+Shiv       Filing                                                               
+
+11 rows selected.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> spool off;

@@ -1,0 +1,11 @@
+SQL> Select Dname from dept inner join(Select Deptno from emp group by Deptno having count(*)=(Select max(count(empno)) from emp where Prj_id='P1' group by Deptno))on DNO=DEPTNO;
+
+DNAME                                                                           
+----------                                                                      
+RESEARCH                                                                        
+
+SQL> commit;
+
+Commit complete.
+
+SQL> spool off;

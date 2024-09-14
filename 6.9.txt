@@ -1,0 +1,20 @@
+SQL> Select empno,ename,job from emp where job=(Select job from emp where ename='Mahesh');
+
+     EMPNO ENAME      JOB                                                       
+---------- ---------- ---------                                                 
+       123 Mahesh     CLRK                                                      
+       103 Shiv       CLRK                                                      
+       113 Rakesh     CLRK                                                      
+       104 Rohit      CLRK                                                      
+       108 Ankit      CLRK                                                      
+       169 Sam        CLRK                                                      
+       115 Akarsh     CLRK                                                      
+       121 Abdul      CLRK                                                      
+
+8 rows selected.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> spool off;

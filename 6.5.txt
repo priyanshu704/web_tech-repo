@@ -1,0 +1,11 @@
+SQL> select deptno,avg(sal) from emp where deptno is not null group by deptno having avg(sal)>=all(select avg(sal) from emp where deptno is not null group by deptno);
+
+DEP   AVG(SAL)                                                                  
+--- ----------                                                                  
+D1       46400                                                                  
+
+SQL> commit;
+
+Commit complete.
+
+SQL> spool off;
