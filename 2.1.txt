@@ -1,9 +1,0 @@
-SQL> ALTER TABLE PROJ ADD CONSTRAINT P_KEY PRIMARY KEY(DNO,PRJ_NO);
-
-Table altered.
-
-SQL> commit;
-
-Commit complete.
-
-SQL> spool off;
