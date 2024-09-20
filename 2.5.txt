@@ -1,5 +1,0 @@
-SQL> ALTER TABLE PROJ ADD(PRJ_FUND NUMBER(7));
-
-Table altered.
-
-SQL> SPOOL OFF;
