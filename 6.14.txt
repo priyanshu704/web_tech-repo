@@ -1,9 +1,0 @@
-SQL>  create index emp_Index on emp(ename,job);
-
-Index created.
-
-SQL>  commit;
-
-Commit complete.
-
-SQL> spool off;
