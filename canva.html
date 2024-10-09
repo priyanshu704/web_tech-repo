@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    body 
+    {
+        background: #e74c3c;
+    }
+
+    #canvas 
+    {
+        position: relative;
+        left: calc(50% - 390px);
+        top: 50px;
+        border: 1px dotted black;
+        cursor: crosshair;
+        background: #ecf0f1;
+    }
+    #coordinates
+    {
+        position: absolute;
+        left: calc(50% - 390px);
+        top:10px;
+        color:#fff;
+        font-family: Arial, sans-serif;
+    }
+</style>
+<script>
+    var canvas;
+    var context;
+    var isDrawing=false;
+    var coord;
+    window.onload = function() {
+    canvas = document.getElementById('canvas');
+    context = canvas.getContext('2d');
+    coord=document.getElementById('coordinates');
+    canvas.width = 780;
+    canvas.height = 490;
+    context.strokeStyle = "#913d88";
+    context.lineWidth = 2;
+    canvas.onmousedown = startDrawing;
+    canvas.onmouseup = stopDrawing;
+    canvas.onmousemove = draw;
+    function startDrawing(e) 
+    {
+        isDrawing = true;
+        context.beginPath();
+        context.moveTo(e.pageX - canvas.offsetLeft, e.pageY - canvas.offsetTop);
+    }
+   
+    function draw(e) 
+    {
+        if (isDrawing) 
+        {
+            var x = e.pageX - canvas.offsetLeft;
+            var y = e.pageY - canvas.offsetTop;
+            context.lineTo(x, y);
+            context.stroke();
+        }
+        updateCoordinates(e.pageX,e.pageY);
+    }
+   
+    function stopDrawing() 
+    {
+        isDrawing = false;
+        context.closePath();
+        coord.innerText='';
+    }
+    function updateCoordinates(x,y)
+    {
+        var canvasr=canves.getBoundingClientRect();
+        var canvasX = x - canvasRect.left;
+        var canvasY = y - canvasRect.top;
+        coord.innerText = `X: ${canvasX.toFixed(0)}, Y: ${canvasY.toFixed(0)}`;
+    }
+}
+   
+   /*var coord = document.getElementById("coord");
+   canvas.onmousemove = function(e) {
+      coord.value = e.pageX+" "+e.pageY+" / "+(e.pageX-canvas.offsetLeft)+" "+(e.pageY-canvas.offsetTop);
+   }*/
+
+</script>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <div id=""coord">X:0,y:0</div>
+</body>
+</html>
