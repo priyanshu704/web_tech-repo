@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Professional Multistep Form</title>
+ <style>
+ body {
+     font-family: 'Helvetica Neue', Arial, sans-serif;
+     background-color: #f7f9fc;
+     margin: 0;
+     padding: 0;
+ }
+ .container {
+     max-width: 600px;
+     margin: 50px auto;
+     padding: 20px;
+     background-color: #fff;
+     border-radius: 8px;
+     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+ }
+ h2 {
+     color: #333;
+     text-align: center;
+     font-weight: 500;
+     margin-bottom: 20px;
+ }
+ .steps {
+     display: flex;
+     justify-content: space-between;
+     margin-bottom: 30px;
+ }
+ .step {
+     width: 40px;
+     height: 40px;
+     background-color: #ddd;
+     border-radius: 50%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     color: #fff;
+     font-weight: bold;
+ }
+ .step.active {
+     background-color: #4caf50;
+ }
+ .form-step {
+     display: none;
+ }
+ .form-step.active {
+     display: block;
+ }
+ label {
+     display: block;
+     margin-bottom: 8px;
+     color: #333;
+     font-weight: bold;
+ }
+ input[type="text"], 
+ input[type="date"],
+ input[type="email"],
+ input[type="tel"],
+ input[type="number"],
+ input[type="password"] {
+     width: calc(100% - 20px);
+     padding: 10px;
+     margin-bottom: 20px;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+     font-size: 16px;
+     transition: border 0.3s ease;
+ }
+ input:focus {
+     border-color: #4caf50;
+     outline: none;
+ }
+ .error {
+     color: red;
+     font-size: 12px;
+     margin-top: -15px;
+     margin-bottom: 10px;
+ }
+ button {
+     background-color: #4caf50;
+     color: white;
+     padding: 10px 20px;
+     border: none;
+     border-radius: 4px;
+     font-size: 16px;
+     cursor: pointer;
+     margin-right: 10px;
+     transition: background-color 0.3s ease;
+ }
+ button:hover {
+     background-color: #45a049;
+ }
+ button:disabled {
+     background-color: #ccc;
+     cursor: not-allowed;
+ }
+ .review-content {
+     padding: 20px;
+     background-color: #f7f7f7;
+     border: 1px solid #e1e1e1;
+     border-radius: 8px;
+     margin-bottom: 20px;
+ }
+ .review-label {
+     font-weight: bold;
+     color: #333;
+ }
+ .review-value {
+     color: #666;
+ }
+ .button-group {
+     text-align: right;
+ }
+ </style>
+</head>
+<body>
+<div class="container">
+ <h2>Multi-step Form with Review</h2>
+ <div class="steps">
+ <span class="step active" id="step1">1</span>
+ <span class="step" id="step2">2</span>
+ <span class="step" id="step3">3</span>
+ <span class="step" id="step4">4</span>
+ </div>
+ <form id="multistepForm" onsubmit="return handleSubmit()">
+ <!-- Step 1: Profile Details -->
+ <div class="form-step active" id="step-1">
+ <h3>Account Set-Up Details</h3>
+ <label for="username">Username:</label>
+ <input type="text" id="username" name="username" required>
+ <span class="error" id="usernameError"></span>
+ <label for="password">Password:</label>
+ <input type="password" id="password" name="password" required>
+ <span class="error" id="passwordError"></span>
+ <label for="confirmPassword">Confirm Password:</label>
+ <input type="password" id="confirmPassword" name="confirmPassword" required>
+ <span class="error" id="confirmPasswordError"></span>
+ <div class="button-group">
+ <button type="button" onclick="nextStep(1)">Next</button>
+ </div>
+ </div>
+ <!-- Step 2:Personal Details-->
+ <div class="form-step" id="step-2">
+    <h3>Personal Details</h3>
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" name="firstName" required>
+    <span class="error" id="firstNameError"></span>
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" name="lastName" required>
+    <span class="error" id="lastNameError"></span>
+    <label for="gender">Gender</label>
+    <label>
+        <input type="radio" name="gender" value="male" required> Male
+    </label>
+    <label>
+        <input type="radio" name="gender" value="female" required> Female
+    </label>
+    <label>
+        <input type="radio" name="gender" value="other" required> Other
+    </label>
+    <span class="error" id="genderError"></span>
+    <label for="nationality">Nationality</label>
+    <input type="text" id="nationality" name="nationality" required>
+    <span class="error" id="nationalityError"></span>
+    <label for="dob">Date of Birth</label>
+    <input type="date" id="dob" name="dob" required>
+    <span class="error" id="dobError"></span>
+    <div class="button-group">
+        <button type="button" onclick="prevStep(2)">Previous</button>
+        <button type="button" onclick="nextStep(2)">Next</button>
+    </div>
+</div>
+ <!-- Step 3: Contact Details -->
+ <div class="form-step" id="step-3">
+ <h3>Contact Details</h3>
+ <label for="email">Email</label>
+ <input type="email" id="email" name="email" required>
+ <span class="error" id="emailError"></span>
+ <label for="phone">Phone Number</label>
+ <input type="tel" id="phone" name="phone" required>
+ <span class="error" id="phoneError"></span>
+ <label for="address">Address</label>
+ <textarea id="address" name="address" rows="3" required></textarea>
+ <span class="error" id="addressError"></span>
+ <div class="button-group">
+ <button type="button" onclick="prevStep(3)">Previous</button>
+ <button type="button" onclick="nextStep(3)">Next</button>
+ </div>
+ </div>
+ <!-- Step 4: Social Profilee Details -->
+ <div class="form-step" id="step-4">
+ <h3>Social Profile Details</h3>
+ <label for="twitter">Twitter Profile URL</label>
+    <input type="url" id="twitter" name="twitter">
+    <span class="error" id="twitterError"></span>
+    
+    <label for="facebook">Facebook Profile URL</label>
+    <input type="url" id="facebook" name="facebook">
+    <span class="error" id="facebookError"></span>
+    
+    <label for="google">Google Profile URL</label>
+    <input type="url" id="google" name="google">
+    <span class="error" id="googleError"></span>
+ <div class="button-group">
+ <button type="button" onclick="prevStep(4)">Previous</button>
+ <button type="button" onclick="nextStep(4)">Next</button>
+ </div>
+ </div>
+ <!-- Step 5: Review Details -->
+ <div class="form-step" id="step-5">
+ <h3>Review Your Details</h3>
+ <div class="review-content">
+ <p><span class="review-label">Username:</span> <span class="review-value" id="reviewUsername"></span></p>
+ <p><span class="review-label">First Name:</span> <span class="review-value" id="reviewFirstName"></span></p>
+ <p><span class="review-label">Last Name:</span> <span class="review-value" id="reviewLastName"></span></p>
+ <p><span class="review-label">Gender:</span> <span class="review-value" id="reviewGender"></span></p>
+ <p><span class="review-label">Nationality:</span> <span class="review-value" id="reviewNationality"></span></p>
+ <p><span class="review-label">Date of Birth:</span> <span class="review-value" id="reviewDob"></span></p>
+ <p><span class="review-label">Email:</span> <span class="review-value" id="reviewEmail"></span></p>
+ <p><span class="review-label">Phone:</span> <span class="review-value" id="reviewPhone"></span></p>
+ <p><span class="review-label">Twitter:</span> <span class="review-value" id="reviewTwitter"></span></p>
+<p><span class="review-label">Facebook:</span> <span class="review-value" id="reviewFacebook"></span></p>
+ <p><span class="review-label">Google:</span> <span class="review-value" id="reviewGoogle"></span></p>
+ </div>
+ <div class="button-group">
+ <button type="button" onclick="prevStep(4)">Previous</button>
+ <button type="submit">Submit</button>
+ </div>
+ </div>
+ </form>
+</div>
+<script>
+ let currentStep = 1;
+ function nextStep(step) {
+     if (validateStep(step)) {
+         document.getElementById('step-' + step).classList.remove('active');
+         currentStep++;
+         if (currentStep === 5) {
+             fillReview();
+         }
+         document.getElementById('step-' + currentStep).classList.add('active');
+         updateStepsIndicator();
+     }
+ }
+ function prevStep(step) {
+     document.getElementById('step-' + step).classList.remove('active');
+     currentStep--;
+     document.getElementById('step-' + currentStep).classList.add('active');
+     updateStepsIndicator();
+ }
+ function updateStepsIndicator() {
+     document.querySelectorAll('.step').forEach((step, index) => {
+         if (index < currentStep) {
+             step.classList.add('active');
+         } else {
+             step.classList.remove('active');
+         }
+     });
+ }
+ function validateStep(step) {
+     let valid = true;
+     document.querySelectorAll('.error').forEach(error => error.innerHTML = '');
+     if (step === 1) {
+         const username = document.getElementById('username').value.trim();
+         const password = document.getElementById('password').value;
+         const confirmPassword = document.getElementById('confirmPassword').value;
+
+         const usernameRegex = /^[a-zA-Z0-9]{6,}$/;
+         if (!usernameRegex.test(username)) {
+             document.getElementById('usernameError').innerHTML = 'Username must be alphanumeric and at least 6 characters long.';
+             valid = false;
+         }
+         const passwordRegex = /^(?=.*[A-Z])(?=.*[\W_]).{7,}$/;
+         if (!passwordRegex.test(password)) {
+             document.getElementById('passwordError').innerHTML = 'Password must contain at least one uppercase letter, one special character, and be at least 7 characters long.';
+             valid = false;
+         }
+         if (password !== confirmPassword) {
+             document.getElementById('confirmPasswordError').innerHTML = 'Passwords do not match.';
+             valid = false;
+         }
+     }
+     if (step === 2) {
+         const firstName = document.getElementById('firstName').value.trim();
+         const lastName = document.getElementById('lastName').value.trim();
+         const dob = document.getElementById('dob').value;
+         const namePattern = /^[A-Z][a-zA-Z]*$/;
+         const dobDate = new Date(dob);
+         const today = new Date();
+
+         if (!namePattern.test(firstName)) {
+             document.getElementById('firstNameError').innerHTML = 'First Name must start with an uppercase letter and contain only alphabets.';
+             valid = false;
+         }
+         if (!namePattern.test(lastName)) {
+             document.getElementById('lastNameError').innerHTML = 'Last Name must start with an uppercase letter and contain only alphabets.';
+             valid = false;
+         }
+         if (!dob || dobDate >= today) {
+             document.getElementById('dobError').innerHTML = 'Date of Birth must be a valid past date.';
+             valid = false;
+         }
+     }
+     if (step === 3) {
+         const email = document.getElementById('email').value.trim();
+         const phone = document.getElementById('phone').value.trim();
+         const address = document.getElementById('address').value.trim();
+         const emailRegex = /^[a-zA-Z0-9._%+-]+@(learner\.manipal\.edu|manipal\.edu)$/
+;
+         if (!emailRegex.test(email)) {
+             document.getElementById('emailError').innerHTML = 'Please enter a valid email address (e.g., user@manipal.edu or user@learner.manipal.edu).';
+             valid = false;
+         }
+         const phoneRegex = /^\d{10}$/;
+         if (!phoneRegex.test(phone)) {
+             document.getElementById('phoneError').innerHTML = 'Phone number must be a 10-digit number.';
+             valid = false;
+         }
+         if (address === '') {
+             document.getElementById('addressError').innerHTML = 'Address is required';
+             valid = false;
+         }
+     }
+     if (step === 4) {
+         const experience = document.getElementById('experience').value;
+         if (experience === '') {
+             document.getElementById('experienceError').innerHTML = 'Experience is required';
+             valid = false;
+         }
+     }
+     return valid;
+ }
+ function fillReview() {
+     document.getElementById('reviewUsername').innerText = document.getElementById('username').value;
+     document.getElementById('reviewFirstName').innerText = document.getElementById('firstName').value;
+     document.getElementById('reviewLastName').innerText = document.getElementById('lastName').value;
+     document.getElementById('reviewGender').innerText = document.querySelector('input[name="gender"]:checked').value;
+     document.getElementById('reviewNationality').innerText = document.getElementById('nationality').value;
+     document.getElementById('reviewDob').innerText = document.getElementById('dob').value;
+     document.getElementById('reviewEmail').innerText = document.getElementById('email').value;
+     document.getElementById('reviewPhone').innerText = document.getElementById('phone').value;
+     document.getElementById('reviewAddress').innerText = document.getElementById('address').value;
+     document.getElementById('reviewTwitter').innerText = document.getElementById('twitter').value || 'N/A';
+document.getElementById('reviewFacebook').innerText = document.getElementById('facebook').value || 'N/A';
+    document.getElementById('reviewGoogle').innerText = document.getElementById('google').value || 'N/A';
+ }
+ function handleSubmit() {
+     if (validateStep(5)) {
+         alert('Form Submitted Successfully!');
+         return true;
+     }
+     return false;
+ }
+</script>
+</body>
+</html>
